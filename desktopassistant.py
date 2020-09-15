@@ -23,9 +23,9 @@ if __name__ == "__main__":
             du.greetback(query)
 
         if query in data.voice_data_exit:
-            en.speak("Alright "+sysuser+"!! Have a nice day")
+            en.speak("Alright " + sysuser + "!! Have a nice day")
             sys.exit()
 
         if "good night" in query or "night" in query:
-            en.speak("Good night "+sysuser+". Have a tight sleep")
+            en.speak("Good night " + sysuser + ". Have a tight sleep")
             sys.exit()
