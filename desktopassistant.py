@@ -2,6 +2,9 @@ from utility.desktoputility import Desktoputility
 from engine.engine import Engine
 import data
 import sys
+import getpass
+
+sysuser = getpass.getuser()
 
 if __name__ == "__main__":
     en = Engine()
@@ -18,10 +21,11 @@ if __name__ == "__main__":
 
         if query in data.voice_greeting:
             du.greetback(query)
-            if "good night" in query or "night" in query:
-                en.speak("Have a tight sleep")
-                sys.exit()
 
         if query in data.voice_data_exit:
-            en.speak('Alright. Have a nice day')
+            en.speak("Alright "+sysuser+"!! Have a nice day")
+            sys.exit()
+
+        if "good night" in query or "night" in query:
+            en.speak("Good night "+sysuser+". Have a tight sleep")
             sys.exit()
