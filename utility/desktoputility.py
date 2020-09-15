@@ -9,11 +9,11 @@ class Desktoputility:
     def greeting(self):
         current_h = int(datetime.datetime.now().hour)
         if 0 <= current_h < 12:
-            self.en.speak('Good Morning')
+            self.en.speak("Good Morning")
         if 12 <= current_h < 17:
-            self.en.speak('Good Afternoon')
+            self.en.speak("Good Afternoon")
         if current_h >= 17 and current_h != 0:
-            self.en.speak('Good Evening')
+            self.en.speak("Good Evening")
 
     def greetback(self, query):
         self.en.speak(query)
