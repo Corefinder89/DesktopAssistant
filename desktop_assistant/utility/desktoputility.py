@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import datetime
+import os
 import webbrowser
 
 import requests
@@ -17,17 +18,17 @@ class Desktoputility:
     def greeting(self):
         current_h = int(datetime.datetime.now().hour)
         if 0 <= current_h < 12:
-            self.en.speak("Good Morning")
+            self.en.speak("Good Morning " + self.ut.get_current_user())
         if 12 <= current_h < 17:
-            self.en.speak("Good Afternoon")
+            self.en.speak("Good Afternoon " + self.ut.get_current_user())
         if current_h >= 17 and current_h != 0:
-            self.en.speak("Good Evening")
+            self.en.speak("Good Evening " + self.ut.get_current_user())
 
     def greetback(self, query):
         self.en.speak(query)
 
     def search_on_google(self, query, output_list):
-        self.en.speak('The top five search results from Google  are listed below.')
+        self.en.speak("The top five search results from Google  are listed below.")
         for output in search(query, num_results=5, lang="en"):
             print(output)
             output_list.append(output)
@@ -49,3 +50,13 @@ class Desktoputility:
         if response.status_code == 200:
             self.en.speak("Okay. Here's one")
             self.en.speak(str(response.json().get("joke")))
+
+    def open_application(self, keyword):
+        if keyword == "safari":
+            os.system("open /Applications/Safari.app")
+        if keyword == "chrome":
+            os.system("open /Applications/Google\ Chrome.app")
+        if keyword == "slack":
+            os.system("open /Applications/Slack.app")
+        if keyword == "insomnia":
+            os.system("open /Applications/Insomnia.app")

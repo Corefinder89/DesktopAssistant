@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import getpass
 import os
 from configparser import SafeConfigParser
 
@@ -17,3 +18,7 @@ class Utility:
         parser = SafeConfigParser()
         parser.read(self.get_path('../configurations/config.ini'))
         return parser
+
+    def get_current_user(self):
+        sysuser = getpass.getuser()
+        return sysuser
