@@ -1,5 +1,7 @@
 import datetime
+import webbrowser
 from engine.engine import Engine
+from googlesearch import search
 
 
 class Desktoputility:
@@ -17,3 +19,14 @@ class Desktoputility:
 
     def greetback(self, query):
         self.en.speak(query)
+
+    def searchOnGoogle(self, query, outputList):
+        self.en.speak('The top five search results from Google  are listed below.')
+        for output in search(query, num_results=5, lang="en"):
+            print(output)
+            outputList.append(output)
+        return outputList
+
+    def openLink(self, outputList):
+        self.en.speak("Here's the first link for you.")
+        webbrowser.open(outputList[0])

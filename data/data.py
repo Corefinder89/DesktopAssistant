@@ -18,3 +18,22 @@ voice_greeting = [
     "good evening",
     "evening"
 ]
+
+voice_search = [
+    "search",
+    "search google",
+    "find in web"
+]
+
+boolean_affirmitive = [
+    "yes",
+    "sure",
+    "alright",
+    "go ahead"
+]
+
+boolean_negate = [
+    "no",
+    "not required",
+    "leave it"
+]
