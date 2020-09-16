@@ -32,3 +32,17 @@ if __name__ == "__main__":
         if "good night" in query or "night" in query:
             en.speak("Good night " + sysuser + ". Have a tight sleep")
             sys.exit()
+
+        # Search on Google
+        if query in data.voice_search:
+            outputList = []
+            en.speak('What should I search for ?')
+            query = en.command()
+            du.searchOnGoogle(query, outputList)
+            en.speak('Should I open up the first link for you ?')
+            query = en.command()
+            if query in data.boolean_affirmitive:
+                du.openLink(outputList)
+            if query in data.boolean_negate:
+                en.speak('Alright.')
+
