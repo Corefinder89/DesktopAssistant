@@ -40,16 +40,16 @@ class Desktopassistant:
 
             # Search on Google
             if query in data.voice_search:
-                outputList = []
-                self.en.speak('What should I search for ?')
+                output_list = []
+                self.en.speak("What should I search for ?")
                 query = self.en.command()
-                self.du.searchOnGoogle(query, outputList)
-                self.en.speak('Should I open up the first link for you ?')
+                self.du.searchOnGoogle(query, output_list)
+                self.en.speak("Should I open up the first link for you ?")
                 query = self.en.command()
                 if query in data.boolean_affirmitive:
-                    self.du.openLink(outputList)
+                    self.du.openLink(output_list)
                 if query in data.boolean_negate:
-                    self.en.speak('Alright.')
+                    self.en.speak("Alright !!")
 
 
 if __name__ == "__main__":
