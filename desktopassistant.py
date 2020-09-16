@@ -2,9 +2,9 @@
 import getpass
 import sys
 
-from data import data
-from engine.engine import Engine
-from utility.desktoputility import Desktoputility
+from desktop_assistant.data import data
+from desktop_assistant.engine.engine import Engine
+from desktop_assistant.utility.desktoputility import Desktoputility
 
 sysuser = getpass.getuser()
 
@@ -34,22 +34,26 @@ class Desktopassistant:
                 sys.exit()
 
             # Exit if user is wishing good night
-            if "good night" in query or "night" in query:
+            if "night" in query:
                 self.en.speak("Good night " + sysuser + ". Have a tight sleep")
                 sys.exit()
 
             # Search on Google
-            if query in data.voice_search:
+            if "search" in query:
                 output_list = []
                 self.en.speak("What should I search for ?")
                 query = self.en.command()
-                self.du.searchOnGoogle(query, output_list)
+                self.du.search_on_google(query, output_list)
                 self.en.speak("Should I open up the first link for you ?")
                 query = self.en.command()
                 if query in data.boolean_affirmitive:
-                    self.du.openLink(output_list)
+                    self.du.open_link(output_list)
                 if query in data.boolean_negate:
                     self.en.speak("Alright !!")
+
+            # Telling a joke
+            if "joke" in query:
+                self.du.tell_a_joke()
 
 
 if __name__ == "__main__":

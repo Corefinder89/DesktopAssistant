@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import pyttsx3
 import speech_recognition as sr
 
@@ -21,7 +22,7 @@ class Engine:
         cmd = sr.Recognizer()
         with sr.Microphone() as source:
             cmd.adjust_for_ambient_noise(source)
-            print("\n"+"Listening....")
+            print("\n" + "Listening....")
             audio = cmd.listen(source)
             try:
                 query = cmd.recognize_google(audio, language="en-us")
